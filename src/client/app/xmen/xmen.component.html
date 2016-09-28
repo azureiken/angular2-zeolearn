@@ -1,0 +1,29 @@
+<p>
+  Howdy! Here's a list of awesome computer scientists. Do you know any others? Add to the list yourself.
+</p>
+
+<form (submit)="addMutant()">
+  <input [(ngModel)]="newMutantName" name="newMutantName" placeholder="Awesome XMen!">
+  <input [(ngModel)]="newMutantOrigin" name="newMutantOrigin" placeholder="XMen! Origin">
+  <input [(ngModel)]="aboutNewMutant" name="aboutNewMutant" placeholder="About XMen! ">
+  <button type="submit">Add</button>
+</form>
+<br>
+<form (submit)="search()">
+  <input [(ngModel)]="mutantSearch" type="text" name="mutantSearch" value="" (keyup)="color='green'" placeholder="Search XMen!">
+  <button type="submit">Search</button>
+</form>
+<ul>
+  <!--<li *ngFor="let mutant of mutants | filterName:'l'">{{mutant.name}}</li>-->
+  <li *ngFor="let mutant of mutants" [class.selected]="mutantSearch === mutant.name" [myHighlight]="color" [myHighlightWhen]="mutantSearch === mutant.name">{{mutant.name}}</li>
+  <!--<li *ngFor="let mutant of mutants" [class.selected]="mutantSearch === mutant.name">{{mutant.name}}</li>-->
+</ul>
+
+
+<!--<label for="pipe"> Async Pipe</label>
+<ul>
+  <li *ngFor="let mutant of getXMenObservable | async | filterName:'k'">{{mutant.name}}</li>
+</ul>
+-->
+
+<!--<span>Streaming from service: {{getXMenObservable | async }}</span>-->
